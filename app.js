@@ -13,7 +13,6 @@ app.get('/health', (req, res) => {
 
 app.get('/version', (req, res) => {
   res.send('1.4') // change this string to ensure a new version deployed
-  console.log("failing eslint on purpose")
 })
 
 app.listen(PORT, '0.0.0.0' ,() => {
