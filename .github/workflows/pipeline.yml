@@ -44,22 +44,23 @@ jobs:
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
-      - name: Discord deploy
-        if: ${{ steps.fly.outcome == 'success' }}
-        uses: rjstone/discord-webhook-notify@v1.0.4
-        with: 
-          text: A new version of Pokedex deployed
-          severity: info
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      #  commented out to prevent multiple Discord messages 
+      # - name: Discord deploy
+      #   if: ${{ steps.fly.outcome == 'success' }}
+      #   uses: rjstone/discord-webhook-notify@v1.0.4
+      #   with: 
+      #     text: A new version of Pokedex deployed
+      #     severity: info
+      #     webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
 
-      - name: Discord failure
-        if: ${{ failure() }}
-        uses: rjstone/discord-webhook-notify@v1.0.4
-        with: 
-          text: Build failed
-          severity: error
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
+      # - name: Discord failure
+      #   if: ${{ failure() }}
+      #   uses: rjstone/discord-webhook-notify@v1.0.4
+      #   with: 
+      #     text: Build failed
+      #     severity: error
+      #     webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
 
 
 
